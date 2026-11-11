@@ -1,42 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dataTables.dataTables.min.css') }}">
-    <script src="https://cdn.datatables.net/3.1.5/js/dataTables.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <title>Document</title>
-</head>
-<body>
-    @include('template.navbar')
-    <div class="container mt-5">
-        <a href="{{ route('tambah') }}" class="btn btn-success">Tambah</a>
-        <table id="table">
-            <thead>
-                <th class="text-center">Nomor</th>
-                <th class="text-center">Foto</th>
-                <th class="text-center">Nama</th>
-                <th class="text-center">Harga</th>
-                <th class="text-center">Aksi</th>
-            </thead>
+@extends('template.layout')
+@section('title', 'Data Menu')
+@section('content')
+<div class="page-wrap">
+    <div class="page-heading">
+        <div><div class="eyebrow">Restaurant management</div><h1 class="page-title">Kelola Menu</h1><p class="page-subtitle">Atur daftar hidangan dan harga yang tersedia.</p></div>
+        <a href="{{ route('tambah') }}" class="btn btn-sangria"><i class="bi bi-plus-lg"></i> Tambah Menu</a>
+    </div>
+    <div class="table-wrap">
+        <table class="table">
+            <thead><tr><th class="text-center">No.</th><th>Foto</th><th>Nama Menu</th><th>Harga</th><th>Kategori</th><th class="text-end">Aksi</th></tr></thead>
             <tbody>
-                @foreach ($menu as $m)
-                <tr> 
+            @forelse ($menu as $m)
+                <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
-                    <td class="text-center"><img src="{{ asset('storage/'.$m->foto) }}" style="height: 100px"></td>
-                    <td class="text-center">{{ $m->name }}</td>
-                    <td class="text-center">Rp {{ number_format($m->harga) }}</td>
-                    <td class="text-center">
-                        <a href="{{ route('edit',$m->id) }}" class="btn btn-primary">Edit</a>
-                        <a href="{{ route('hapus',$m->id) }}" class="btn btn-danger">Hapus</a>
-                    </td>
+                    <td><img class="table-photo" src="{{ asset('storage/'.$m->foto) }}" alt="{{ $m->name }}"></td>
+                    <td class="fw-bold">{{ $m->name }}</td><td>Rp {{ number_format($m->harga,0,',','.') }}</td><td>{{ $m->kategori->name ?? '—' }}</td>
+                    <td class="text-end text-nowrap"><a href="{{ route('edit',$m->id) }}" class="btn btn-soft btn-sm">Edit</a><a href="{{ route('hapus',$m->id) }}" class="btn btn-outline-danger btn-sm ms-1" onclick="return confirm('Hapus menu ini?')">Hapus</a></td>
                 </tr>
-                @endforeach
+            @empty
+                <tr><td colspan="6" class="text-center py-5 text-muted">Belum ada menu. Tambahkan menu pertama kamu.</td></tr>
+            @endforelse
             </tbody>
         </table>
     </div>
-<script>new DataTable('#table')</script>
-</body>
-</html>
+</div>
+@endsection
