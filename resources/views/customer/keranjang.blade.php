@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <title>Keranjang Belanja</title>
-    <!-- Bootstrap 5 CSS -->
-    </head>
-<body class="bg-light">
-
-    @include('template.navbar')
-
-    <div class="container py-4">
-        <h2 class="mb-4 fw-bold">Keranjang Belanja</h2>
-        <div class="row">
-            <!-- BAGIAN KIRI -->
-            <div class="col-md-8">
-                    @include('template.cardkeranjang')
-            </div>
-
-            <!-- BAGIAN KANAN: Ringkasan -->
-            <div class="col-md-4">
-                @include('template.cardpembayaran')
-            </div>
-        </div>
+@extends('template.layout')
+@section('title', 'Keranjang')
+@section('content')
+<div class="page-wrap">
+    <div class="page-heading"><div><div class="eyebrow">Your selection</div><h1 class="page-title">Keranjang Belanja</h1><p class="page-subtitle">Periksa pesananmu sebelum menyelesaikan pembayaran.</p></div></div>
+    <div class="row g-4">
+        <div class="col-lg-8">@include('template.cardkeranjang')</div>
+        <div class="col-lg-4">@include('template.cardpembayaran')</div>
     </div>
-
-<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-</body>
-</html>
+</div>
+@endsection
