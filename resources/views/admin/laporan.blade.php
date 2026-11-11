@@ -1,25 +1,49 @@
-@extends('template.layout')
-@section('title', 'Laporan Transaksi')
-@section('content')
-<div class="page-wrap">
-    <div class="page-heading"><div><div class="eyebrow">Restaurant management</div><h1 class="page-title">Laporan Transaksi</h1><p class="page-subtitle">Pantau pembayaran dan pesanan pelanggan.</p></div></div>
-    <div class="table-wrap">
-        <table class="table">
-            <thead><tr><th>No.</th><th>Pelanggan</th><th>Bukti Pembayaran</th><th>Total</th><th>Status</th><th class="text-end">Aksi</th></tr></thead>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/dataTables.dataTables.min.css') }}">
+    <script src="https://cdn.datatables.net/3.1.5/js/dataTables.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    @include('template.navbar')
+    <div class="container mt-5">
+        <table id="table">
+            <thead>
+                <th class="text-center">Nomor</th>
+                <th class="text-center">Nama</th>
+                <th class="text-center">Bukti Transaksi</th>
+                <th class="text-center">Total Harga</th>
+                <th class="text-center">Pembayaran</th>
+                <th class="text-center">Aksi</th>
+            </thead>
             <tbody>
-            @forelse ($transaksi as $d)
-                <tr>
-                    <td>{{ $loop->iteration }}</td><td class="fw-bold">{{ $d->user->name }}</td>
-                    <td><a href="{{ asset('storage/'.$d->bukti_pembayaran) }}" target="_blank" rel="noopener"><img class="table-photo" src="{{ asset('storage/'.$d->bukti_pembayaran) }}" alt="Bukti pembayaran"></a></td>
-                    <td class="fw-bold">Rp {{ number_format($d->totalharga,0,',','.') }}</td>
-                    <td>@if ($d->pembayaran == 'lunas')<span class="status-pill status-paid">Lunas</span>@else<span class="status-pill status-pending">Belum Bayar</span>@endif</td>
-                    <td class="text-end">@if ($d->pembayaran !== 'lunas')<a href="{{ route('lunas',$d->id) }}" class="btn btn-sangria btn-sm" onclick="return confirm('Tandai transaksi ini sebagai lunas?')">Tandai Lunas</a>@else<span class="text-muted small">Selesai</span>@endif</td>
+                @foreach ($transaksi as $d)
+                <tr> 
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td class="text-center">{{ $d->user->name }}</td>
+                    <td class="text-center"><img src="{{ asset('storage/'.$d->bukti_pembayaran) }}" style="height: 100px"></td>
+                    <td class="text-center">Rp {{ number_format($d->totalharga) }}</td>
+                    <td class="text-center">
+                        @if ($d->pembayaran == 'lunas')
+                            <p class="badge btn-info">Lunas</p>
+                        @else
+                            <p class="badge btn-secondary">Belum Bayar</p>
+                        @endif
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ route('lunas',$d->id) }}" class="btn btn-primary">Lunas</a>
+                    </td>
                 </tr>
-            @empty
-                <tr><td colspan="6" class="text-center py-5 text-muted">Belum ada transaksi.</td></tr>
-            @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>
-</div>
-@endsection
+<script>new DataTable('#table')</script>
+</body>
+</html>
