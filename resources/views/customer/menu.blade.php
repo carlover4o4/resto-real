@@ -1,33 +1,42 @@
-@extends('template.layout')
-@section('title', 'Menu')
-@section('content')
-<div class="page-wrap">
-    <div class="page-heading">
-        <div><div class="eyebrow">Fresh from our kitchen</div><h1 class="page-title">Temukan Menu Favoritmu</h1><p class="page-subtitle">Pilihan hidangan lezat untuk menemani harimu.</p></div>
-    </div>
-    @if ($menu->isEmpty())
-        <div class="panel empty-state"><div class="empty-icon">🍽️</div><h3>Menu belum tersedia</h3><p>Silakan kembali lagi nanti.</p></div>
-    @else
-        <div class="menu-grid">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    @include('template.navbar')
+    <div class="container">
+        <div class="row">
             @foreach ($menu as $m)
-                <article class="menu-card">
-                    <img class="menu-photo" src="{{ asset('storage/'.$m->foto) }}" alt="{{ $m->name }}">
-                    <div class="menu-card-body">
-                        <span class="menu-category">{{ $m->kategori->name ?? 'Pilihan Chef' }}</span>
-                        <h2 class="menu-name">{{ $m->name }}</h2>
-                        <div class="menu-price">Rp {{ number_format($m->harga, 0, ',', '.') }}</div>
-                        <form action="{{ route('postkeranjang',$m->id) }}" method="POST">
-                            @csrf
-                            <label class="form-label" for="qty-{{ $m->id }}">Jumlah pesanan</label>
-                            <div class="d-flex gap-2">
-                                <input id="qty-{{ $m->id }}" type="number" class="form-control" name="qty" min="1" value="1" required>
-                                <button type="submit" class="btn btn-sangria text-nowrap"><i class="bi bi-plus-lg"></i> Tambah</button>
-                            </div>
-                        </form>
+                <div class="col-4">
+                    <div class="card p-3 mt-5 shadow">
+                        <img src="{{ asset('storage/'.$m->foto) }}" style="height: 300px" class="card-img-top">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ $m->name }}</h4>
+                            <small class="card-text">{{ number_format($m->harga) }}</small>
+                            <form action="{{ route('postkeranjang',$m->id) }}" method="POST">
+                                @csrf
+                                <div class="row g-2 align-items-end ">
+                                    <div class="col-4">
+                                        <label>Quantity</label>
+                                        <input type="number" class="form-control" name="qty" min="1" required>
+                                    </div>
+                                    <div class="col-8">
+                                        <button type="submit" class="btn btn-success w-100 grow">Tambah</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </article>
+                </div>
             @endforeach
         </div>
-    @endif
-</div>
-@endsection
+    </div>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>
