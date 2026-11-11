@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    @include('template.navbar')
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow" style="width: 350px">
             <form action="{{ route('posttambah') }}" method="POST" enctype="multipart/form-data">
