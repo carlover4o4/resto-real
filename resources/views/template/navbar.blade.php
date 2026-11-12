@@ -1,20 +1,35 @@
-<header class="resto-navbar">
-    <div class="container resto-nav-inner">
-        <a class="resto-brand" href="{{ auth()->user()->role == 'admin' ? route('admin') : route('menu') }}">
-            <span class="resto-brand-mark">R</span>
-            <span>Resto</span>
-        </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 border-bottom">
+    <!-- Brand / Judul -->
+    <a class="navbar-brand font-weight-bold"
+        href="{{ auth()->user()->role == 'admin' ? route('admin') : route('menu') }}">
+        <span class="resto-brand-mark">D</span>
+        <span>Delish App</span>
+    </a>
 
-        <nav class="resto-nav-links" aria-label="Navigasi utama">
+    <!-- Menu Link -->
+    <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav align-items-center">
             @if (auth()->user()->role == 'admin')
-                <a href="{{ route('admin') }}" class="resto-nav-link {{ request()->routeIs('admin','edit','tambah') ? 'active' : '' }}">Data Menu</a>
-                <a href="{{ route('laporan') }}" class="resto-nav-link {{ request()->routeIs('laporan') ? 'active' : '' }}">Laporan</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin') }}">Menu Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('laporan') }}">Reports</a>
+                </li>
             @else
-                <a href="{{ route('menu') }}" class="resto-nav-link {{ request()->routeIs('menu') ? 'active' : '' }}">Menu</a>
-                <a href="{{ route('keranjang') }}" class="resto-nav-link {{ request()->routeIs('keranjang') ? 'active' : '' }}">Keranjang</a>
-                <a href="{{ route('riwayat') }}" class="resto-nav-link {{ request()->routeIs('riwayat') ? 'active' : '' }}">Riwayat Transaksi</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('menu') }}">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('keranjang') }}">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('riwayat') }}">Transaction History</a>
+                </li>
             @endif
-            <a href="{{ route('logout') }}" class="resto-nav-link resto-logout">Logout</a>
-        </nav>
+            <li class="nav-item ml-2">
+                <a class="nav-link text-danger" href="{{ route('logout') }}">Logout</a>
+            </li>
+        </ul>
     </div>
-</header>
+</nav>
