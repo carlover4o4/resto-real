@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
                 </div>
                 <div class="mb-3 d-grid">
                     <button type="submit" class="btn btn-primary">Login</button>
-                    <small>Sudah Punya Akun?<a href="{{ route('register') }}">Register</a></small>
+                    <small>Belum Punya Akun? <a href="{{ route('register') }}">Register</a></small>
                 </div>
             </form>
         </div>
@@ -29,3 +30,5 @@
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
+
+{{-- INI ADALAH CODE HASIL KERJA ALIYA - SUKABUMI - RPL 2 --}}

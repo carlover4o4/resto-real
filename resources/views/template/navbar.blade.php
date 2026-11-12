@@ -1,12 +1,33 @@
-<nav class="nav bg-dark">
-    @if (auth()->user()->role == 'admin')
-        <a href="{{ route('admin') }}" class="nav-link text-center">Data</a>
-        <a href="{{ route('laporan') }}" class="nav-link text-center">Laporan</a>
-    @else
-        <a href="{{ route('menu') }}" class="nav-link text-center">Menu</a>
-        <a href="{{ route('keranjang') }}" class="nav-link text-center">Keranjang</a>
-        <a href="{{ route('riwayat') }}" class="nav-link text-center">Riwayat Transaksi</a>
-    @endif
-        <a href="{{ route('logout') }}" class="nav-link text-center">Logout</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 border-bottom">
+    <a class="navbar-brand font-weight-bold"
+        href="{{ auth()->user()->role == 'admin' ? route('admin') : route('menu') }}">
+        <span class="resto-brand-mark">A</span>
+        <span>Aliya's Delish App</span>
+    </a>
 
+    <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav align-items-center">
+            @if (auth()->user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin') }}">Menu Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('laporan') }}">Reports</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('menu') }}">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('keranjang') }}">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('riwayat') }}">Transaction History</a>
+                </li>
+            @endif
+            <li class="nav-item ml-2">
+                <a class="nav-link text-danger" href="{{ route('logout') }}">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>

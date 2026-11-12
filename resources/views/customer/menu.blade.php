@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
     <title>Document</title>
 </head>
 <body>
     @include('template.navbar')
     <div class="container">
+        <h1 class="text-center" style="font-weight: bold; font-style: italic;">Our Menu</h1>
         <div class="row">
             @foreach ($menu as $m)
-                <div class="col-4">
+                <div class="col-3">
                     <div class="card p-3 mt-5 shadow">
                         <img src="{{ asset('storage/'.$m->foto) }}" style="height: 300px" class="card-img-top">
                         <div class="card-body">

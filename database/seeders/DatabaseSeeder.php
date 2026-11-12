@@ -34,50 +34,48 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Kategori::create([
-            'name'=>'makanan',
+            'name'=>'cake',
         ]);
 
         Kategori::create([
-            'name'=>'minuman'
+            'name'=>'dessert',
+        ]);
+
+        Kategori::create([
+            'name'=>'drink',
         ]);
 
         Menu::create([
-            'name'=>'Pempek',
-            'harga'=>20000,
-            'foto'=>'img/pempek.png',
-            'kategori_id'=>1
-        ]);
-
-        Menu::create([
-            'name'=>'Sate',
-            'harga'=>30000,
-            'foto'=>'img/sate.png',
+            'name'=>'Strawberry Cake',
+            'harga'=>150000,
+            'foto'=>'img/cake1.jpg',
             'kategori_id'=>1
         ]);
 
         Menu::create([
-            'name'=>'Seblak',
-            'harga'=>25000,
-            'foto'=>'img/seblak.png',
-            'kategori_id'=>1
+            'name'=>'Strawberry Mochi',
+            'harga'=>123000,
+            'foto'=>'img/dessert2.jpg',
+            'kategori_id'=>2
         ]);
+
         Menu::create([
-            'name'=>'Pecel Lele',
-            'harga'=>40000,
-            'foto'=>'img/pecellele.png',
-            'kategori_id'=>1
-        ]);
-        Menu::create([
-            'name'=>'Es Campur',
-            'harga'=>20000,
-            'foto'=>'img/escampur.png',
+            'name'=>'Cookies Strawberry',
+            'harga'=>120000,
+            'foto'=>'img/dessert4.jpg',
             'kategori_id'=>2
         ]);
         Menu::create([
-            'name'=>'Es Cendol',
-            'harga'=>15000,
-            'foto'=>'img/escendol.png',
+            'name'=>'Choco Fla',
+            'harga'=>90000,
+            'foto'=>'img/dessert6.jpg',
             'kategori_id'=>2
+        ]);
+        Menu::create([
+            'name'=>'Matcha Vanilla Smothie',
+            'harga'=>120000,
+            'foto'=>'img/drink3.jpg',
+            'kategori_id'=>3
         ]);
 
     }

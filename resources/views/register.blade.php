@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
                 </div>
                 <div class="mb-3 d-grid">
                     <button class="btn btn-primary">Register</button>
-                    <small>Belum Punya Akun?<a href="{{ route('login') }}">Login</a></small>
+                    <small>Sudah Punya Akun?<a href="{{ route('login') }}">Login</a></small>
                 </div>
             </form>
         </div>

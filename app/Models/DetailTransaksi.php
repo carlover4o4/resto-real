@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class DetailTransaksi extends Model
 {
     protected $guarded = ['id'];
+
+    //--- ALIYA'S DETAIL TRANSAKSI'S CODE ---
     public function user(){
         return $this->belongsTo(User::class);
     }

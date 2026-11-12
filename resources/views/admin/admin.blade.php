@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/dataTables.dataTables.min.css') }}">
     <script src="https://cdn.datatables.net/3.1.5/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
     <title>Document</title>
 </head>
 <body>
