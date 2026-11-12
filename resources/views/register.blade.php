@@ -9,7 +9,6 @@
     <title>Document</title>
 </head>
 <body>
-    // --- ALIYA - XII RPL 2 ---
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow" style="width: 350px">
             <form action="{{ route('postregister') }}" method="POST">
