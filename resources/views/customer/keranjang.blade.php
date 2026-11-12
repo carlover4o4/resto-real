@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/resto-theme.css') }}">
     <title>Keranjang Belanja</title>
-    <!-- Bootstrap 5 CSS -->
     </head>
 <body class="bg-light">
 
@@ -15,12 +14,10 @@
     <div class="container py-4">
         <h2 class="mb-4 fw-bold">Keranjang Belanja</h2>
         <div class="row">
-            <!-- BAGIAN KIRI -->
             <div class="col-md-8">
                     @include('template.cardkeranjang')
             </div>
 
-            <!-- BAGIAN KANAN: Ringkasan -->
             <div class="col-md-4">
                 @include('template.cardpembayaran')
             </div>

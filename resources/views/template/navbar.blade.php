@@ -1,12 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 border-bottom">
-    <!-- Brand / Judul -->
     <a class="navbar-brand font-weight-bold"
         href="{{ auth()->user()->role == 'admin' ? route('admin') : route('menu') }}">
-        <span class="resto-brand-mark">D</span>
-        <span>Delish App</span>
+        <span class="resto-brand-mark">A</span>
+        <span>Aliya's Delish App</span>
     </a>
 
-    <!-- Menu Link -->
     <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav align-items-center">
             @if (auth()->user()->role == 'admin')
