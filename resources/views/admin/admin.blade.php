@@ -11,6 +11,7 @@
     <title>Document</title>
 </head>
 <body>
+    // --- ALIYA - XII RPL 2 ---
     @include('template.navbar')
     <div class="container mt-5">
         <a href="{{ route('tambah') }}" class="btn btn-success">Tambah</a>

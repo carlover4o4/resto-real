@@ -10,9 +10,6 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    // --- ALIYA - XII RPL 2 - ADMINCONTROLLER ---
-
-
     public function admin(){
         $menu = Menu::with('kategori')->get();
         return view('admin.admin',compact('menu'));
